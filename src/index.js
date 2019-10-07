@@ -9,6 +9,27 @@ module.exports = function getTimeForEducation(
     knowsProgramming = true,
     config = {family: 4}
     ) {
-      return 0;
+
+      let hoursToLearnBasics = 500;
+      let hoursToMaster = 800;
+      let hoursToLearnFromScratch = hoursToLearnBasics + hoursToMaster;
+      
+      let numberOfWeeks;
+
+      let numberOfHoursPerWeekAccordingFocus = config[focus]; //number of hours student can spend on learning based on its focus
+      
+      if (knowsProgramming == true) {
+
+        numberOfWeeks = (hoursToLearnFromScratch - hoursToLearnBasics) / numberOfHoursPerWeekAccordingFocus;
+ 
+      } else {
+
+        numberOfWeeks = hoursToLearnFromScratch / numberOfHoursPerWeekAccordingFocus;
+
+      }
+
+      return Math.ceil(numberOfWeeks);
+
+      
   };
   
